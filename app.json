@@ -3,7 +3,9 @@
   "description": "Time registration that doesn't suck",
   "repository": "https://github.com/DefactoSoftware/Hours",
   "logo": "https://raw.githubusercontent.com/DefactoSoftware/Hours/development/app/assets/images/logo.png",
-  "keywords": ["hours"],
+  "keywords": [
+    "hours"
+  ],
   "env": {
     "SINGLE_TENANT_MODE": "true",
     "SMTP_ADDRESS": "smtp.sendgrid.net",
@@ -14,10 +16,8 @@
   "scripts": {
     "postdeploy": "bundle exec rake db:migrate"
   },
+  "image": "timchunght/cedar",
   "addons": [
-    "heroku-postgresql",
-    "memcachier",
-    "papertrail",
-    "sendgrid"
+    "heroku-postgresql"
   ]
 }

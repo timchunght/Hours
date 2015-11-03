@@ -1,0 +1,22 @@
+web:
+  build: .
+  command: bundle exec unicorn -p $PORT -c ./config/unicorn.rb
+  working_dir: /app/
+  environment:
+    PORT: 8080
+    DATABASE_URL: 'postgres://postgres:@herokuPostgresql:5432/postgres'
+  ports:
+    - '8080:8080'
+  links:
+    - herokuPostgresql
+worker:
+  build: .
+  command: bundle exec rake jobs:work
+  working_dir: /app/
+  environment:
+    DATABASE_URL: 'postgres://postgres:@herokuPostgresql:5432/postgres'
+  links:
+    - herokuPostgresql
+herokuPostgresql:
+  image: postgres
+
